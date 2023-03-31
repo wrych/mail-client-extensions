@@ -16,6 +16,7 @@ var Email = /** @class */ (function () {
             this.messageId = messageId;
             var message = GmailApp.getMessageById(this.messageId);
             this.subject = message.getSubject();
+            this.date = message.getDate();
             var fromHeaders = message.getFrom();
             var sent = fromHeaders.toLowerCase().indexOf(userEmail) >= 0;
             this.contactFullEmail = sent ? message.getTo() : message.getFrom();
@@ -70,6 +71,7 @@ var Email = /** @class */ (function () {
         email.accessToken = values.accessToken;
         email.messageId = values.messageId;
         email.subject = values.subject;
+        email.date = values.date;
         email.contactEmail = values.contactEmail;
         email.contactFullEmail = values.contactFullEmail;
         email.contactName = values.contactName;
