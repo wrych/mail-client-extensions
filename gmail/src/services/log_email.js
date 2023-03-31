@@ -4,8 +4,8 @@
  */
 function _formatEmailBody(email, error) {
     var header = "<span>".concat((0, _t)("Subject:"), " ").concat((0, escapeHtml)(email.subject), "</span><br/>");
-    header += "<span>".concat((0, _t)("From:"), " ").concat((0, escapeHtml)(email.contactEmail), "</span><br/><br/>");
-    var body = header.concat(email.body);
+    header += "<span>".concat((0, _t)("From:"), " ").concat((0, escapeHtml)(email.contactEmail), "</span>");
+    var body = email.body;
     if (error.code === "attachments_size_exceeded") {
         body += "<br/><i>".concat(
             (0, _t)("Attachments could not be logged in Odoo because their total size exceeded the allowed maximum."),
@@ -18,8 +18,8 @@ function _formatEmailBody(email, error) {
         /class=\"gmail_chip gmail_drive_chip" style=\"/g,
         'class="gmail_chip gmail_drive_chip" style=" min-height: 32px;',
     );
-    body += "<br/><br/>".concat((0, _t)("Logged from"), "<b> ").concat((0, _t)("Gmail Inbox"), "</b>");
-    return body;
+    footer = "".concat((0, _t)("Logged from"), "<b> ").concat((0, _t)("Gmail Inbox"), "</b>");
+    return [header, body, footer].join("<hr />");
 }
 /**
  * Log the given email body in the chatter of the given record.
