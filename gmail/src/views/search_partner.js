@@ -37,7 +37,7 @@ function onOpenPartner(state, parameters) {
         null,
         null,
         canCreateProject,
-        error,
+        error
     );
     return (0, pushCard)((0, buildView)(newState));
 }
@@ -61,12 +61,12 @@ function buildSearchPartnerView(state, query, initialSearch) {
             .setFieldName("search_partner_query")
             .setTitle((0, _t)("Search contact"))
             .setValue(searchValue)
-            .setOnChangeAction((0, actionCall)(state, "onSearchPartnerClick")),
+            .setOnChangeAction((0, actionCall)(state, "onSearchPartnerClick"))
     );
     searchSection.addWidget(
         CardService.newTextButton()
             .setText((0, _t)("Search"))
-            .setOnClickAction((0, actionCall)(state, "onSearchPartnerClick")),
+            .setOnClickAction((0, actionCall)(state, "onSearchPartnerClick"))
     );
     for (var _i = 0, partners_1 = partners; _i < partners_1.length; _i++) {
         var partner = partners_1[_i];
@@ -77,7 +77,7 @@ function buildSearchPartnerView(state, query, initialSearch) {
             .setStartIcon(
                 CardService.newIconImage()
                     .setIconUrl(partner.image || (partner.isCompany ? UI_ICONS.no_company : UI_ICONS.person))
-                    .setImageCropType(CardService.ImageCropType.CIRCLE),
+                    .setImageCropType(CardService.ImageCropType.CIRCLE)
             );
         if (partner.isWriteable) {
             partnerCard.setButton(
@@ -88,13 +88,13 @@ function buildSearchPartnerView(state, query, initialSearch) {
                           .setOnClickAction(
                               (0, actionCall)(state, "onLogEmailPartner", {
                                   partnerId: partner.id,
-                                  query: query,
-                              }),
+                                  query: query
+                              })
                           )
                     : CardService.newImageButton()
                           .setAltText((0, _t)("Email already logged on the contact"))
                           .setIconUrl(UI_ICONS.email_logged)
-                          .setOnClickAction((0, actionCall)(state, "onEmailAlreadyLogged")),
+                          .setOnClickAction((0, actionCall)(state, "onEmailAlreadyLogged"))
             );
         }
         if (partner.email) {

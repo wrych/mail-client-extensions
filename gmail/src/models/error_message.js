@@ -15,7 +15,7 @@ var _ERROR_CODE_MESSAGES = {
     unknown: "Something bad happened. Please, try again later.",
     // Attachment
     attachments_size_exceeded:
-        "Attachments could not be logged in Odoo because their total size exceeded the allowed maximum.",
+        "Attachments could not be logged in Odoo because their total size exceeded the allowed maximum."
 };
 /**
  * Represent an error message which will be displayed on the add-on.

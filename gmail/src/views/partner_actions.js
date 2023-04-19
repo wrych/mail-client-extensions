@@ -27,14 +27,14 @@ function buildPartnerActionView(state, partnerSection) {
                 CardService.newImageButton()
                     .setAltText((0, _t)("Refresh"))
                     .setIconUrl(UI_ICONS.reload)
-                    .setOnClickAction((0, actionCall)(state, "onReloadPartner")),
+                    .setOnClickAction((0, actionCall)(state, "onReloadPartner"))
             );
         }
         actionButtonSet.addButton(
             CardService.newImageButton()
                 .setAltText((0, _t)("Search contact"))
                 .setIconUrl(UI_ICONS.search)
-                .setOnClickAction((0, actionCall)(state, "onSearchPartner")),
+                .setOnClickAction((0, actionCall)(state, "onSearchPartner"))
         );
         partnerSection.addWidget(actionButtonSet);
     } else if (!isLogged) {
@@ -44,7 +44,7 @@ function buildPartnerActionView(state, partnerSection) {
             CardService.newImageButton()
                 .setAltText((0, _t)("Search contact"))
                 .setIconUrl(UI_ICONS.search)
-                .setOnClickAction((0, actionCall)(state, "buildLoginMainView")),
+                .setOnClickAction((0, actionCall)(state, "buildLoginMainView"))
         );
         partnerSection.addWidget(actionButtonSet);
     }

@@ -83,7 +83,7 @@ var Partner = /** @class */ (function () {
         var response = (0, postJsonRpcCached)(URLS.IAP_COMPANY_ENRICHMENT, {
             email: userEmail,
             domain: senderDomain,
-            secret: odooSharedSecret,
+            secret: odooSharedSecret
         });
         var error = new ErrorMessage();
         if (!response) {
@@ -106,7 +106,7 @@ var Partner = /** @class */ (function () {
         var url = State.odooServerUrl + URLS.PARTNER_CREATE;
         var accessToken = State.accessToken;
         var response = (0, postJsonRpc)(url, partnerValues, {
-            Authorization: "Bearer " + accessToken,
+            Authorization: "Bearer " + accessToken
         });
         return response && response.id;
     };
@@ -129,7 +129,7 @@ var Partner = /** @class */ (function () {
         var response = (0, postJsonRpc)(
             url,
             { email: email, name: name, partner_id: partnerId },
-            { Authorization: "Bearer " + accessToken },
+            { Authorization: "Bearer " + accessToken }
         );
         if (!response || !response.partner) {
             var error = new ErrorMessage("http_error_odoo");
@@ -181,7 +181,7 @@ var Partner = /** @class */ (function () {
             response.partners.map(function (values) {
                 return Partner.fromOdooResponse(values);
             }),
-            new ErrorMessage(),
+            new ErrorMessage()
         ];
     };
     /**

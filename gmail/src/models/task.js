@@ -33,7 +33,7 @@ var Task = /** @class */ (function () {
         var response = (0, postJsonRpc)(
             url,
             { email_subject: emailSubject, email_body: emailBody, project_id: projectId, partner_id: partnerId },
-            { Authorization: "Bearer " + accessToken },
+            { Authorization: "Bearer " + accessToken }
         );
         var taskId = response ? response.task_id || null : null;
         if (!taskId) {
@@ -41,7 +41,7 @@ var Task = /** @class */ (function () {
         }
         return Task.fromJson({
             id: taskId,
-            name: response.name,
+            name: response.name
         });
     };
     return Task;

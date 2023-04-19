@@ -16,12 +16,12 @@ var URLS = {
     CREATE_PROJECT: "/mail_plugin/project/create",
     CREATE_TASK: "/mail_plugin/task/create",
     // IAP
-    IAP_COMPANY_ENRICHMENT: "https://iap-services.odoo.com/iap/mail_extension/enrich",
+    IAP_COMPANY_ENRICHMENT: "https://iap-services.odoo.com/iap/mail_extension/enrich"
 };
 var ODOO_AUTH_URLS = {
     LOGIN: "/web/login",
     AUTH_CODE: "/mail_plugin/auth",
     CODE_VALIDATION: "/mail_plugin/auth/access_token",
     SCOPE: "outlook",
-    FRIENDLY_NAME: "Gmail",
+    FRIENDLY_NAME: "Gmail"
 };

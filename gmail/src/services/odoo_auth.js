@@ -16,22 +16,22 @@ function odooAuthCallback(callbackRequest) {
     var authCode = callbackRequest.parameter.auth_code;
     if (success !== "1") {
         return HtmlService.createHtmlOutput(
-            errorPage.replace("__ERROR_MESSAGE__", "Odoo did not return successfully."),
+            errorPage.replace("__ERROR_MESSAGE__", "Odoo did not return successfully.")
         );
     }
     Logger.log("Get access token from auth code...");
     var userProperties = PropertiesService.getUserProperties();
     var odooUrl = userProperties.getProperty("ODOO_SERVER_URL");
     var response = (0, postJsonRpc)(odooUrl + ODOO_AUTH_URLS.CODE_VALIDATION, {
-        auth_code: authCode,
+        auth_code: authCode
     });
     if (!response || !response.access_token || !response.access_token.length) {
         return HtmlService.createHtmlOutput(
             errorPage.replace(
                 "__ERROR_MESSAGE__",
                 "The token exchange failed. Maybe your token has expired or your database can not be reached by the Google server." +
-                    "<hr noshade>Contact your administrator or our support.",
-            ),
+                    "<hr noshade>Contact your administrator or our support."
+            )
         );
     }
     var accessToken = response.access_token;
@@ -65,7 +65,7 @@ function getOdooAuthUrl() {
             redirect: redirectToAddon,
             friendlyname: "Gmail",
             state: stateToken,
-            scope: scope,
+            scope: scope
         });
     return url;
 }
@@ -103,7 +103,7 @@ var isOdooDatabaseReachable = function (odooUrl) {
         odooUrl + ODOO_AUTH_URLS.CODE_VALIDATION,
         { auth_code: null },
         {},
-        { returnRawResponse: true },
+        { returnRawResponse: true }
     );
     if (!response) {
         return false;

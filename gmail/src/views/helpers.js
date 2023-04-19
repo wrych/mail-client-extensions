@@ -71,7 +71,7 @@ function createKeyValueWidget(label, content, icon, bottomLabel, button, action,
             CardService.newIconImage()
                 .setIconUrl(icon)
                 .setImageCropType(iconCropStyle)
-                .setAltText((0, escapeHtml)(iconLabel || label)),
+                .setAltText((0, escapeHtml)(iconLabel || label))
         );
     }
     widget.setWrapText(wrap);
@@ -100,7 +100,7 @@ function actionCall(state, functionName, parameters) {
         .setParameters({
             functionName: functionName,
             state: state.toJson(),
-            parameters: JSON.stringify(parameters),
+            parameters: JSON.stringify(parameters)
         });
 }
 function notify(message) {
