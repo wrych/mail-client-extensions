@@ -34,7 +34,7 @@ var Email = /** @class */ (function () {
             return message.getBody();
         },
         enumerable: false,
-        configurable: true,
+        configurable: true
     });
     /**
      * Parse a full FROM header and return the name part and the email part.

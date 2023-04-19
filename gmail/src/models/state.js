@@ -31,7 +31,7 @@ var State = /** @class */ (function () {
         partners,
         searchedProjects,
         canCreateProject,
-        error,
+        error
     ) {
         this.partner = partner;
         this.canCreatePartner = canCreatePartner;
@@ -81,7 +81,7 @@ var State = /** @class */ (function () {
             searchedPartners,
             searchedProjects,
             canCreateProject,
-            error,
+            error
         );
     };
     Object.defineProperty(State.prototype, "odooCompaniesParameter", {
@@ -100,7 +100,7 @@ var State = /** @class */ (function () {
             return "";
         },
         enumerable: false,
-        configurable: true,
+        configurable: true
     });
     Object.defineProperty(State, "accessToken", {
         /**
@@ -114,14 +114,14 @@ var State = /** @class */ (function () {
             return (0, isTrue)(accessToken);
         },
         enumerable: false,
-        configurable: true,
+        configurable: true
     });
     Object.defineProperty(State, "isLogged", {
         get: function () {
             return !!this.accessToken;
         },
         enumerable: false,
-        configurable: true,
+        configurable: true
     });
     Object.defineProperty(State, "odooLoginUrl", {
         /**
@@ -132,7 +132,7 @@ var State = /** @class */ (function () {
             return (0, isTrue)(loginUrl);
         },
         enumerable: false,
-        configurable: true,
+        configurable: true
     });
     Object.defineProperty(State, "odooServerUrl", {
         /**
@@ -151,7 +151,7 @@ var State = /** @class */ (function () {
             userProperties.setProperty("ODOO_SERVER_URL", value);
         },
         enumerable: false,
-        configurable: true,
+        configurable: true
     });
     Object.defineProperty(State, "odooSharedSecret", {
         /**
@@ -164,7 +164,7 @@ var State = /** @class */ (function () {
             return (0, isTrue)(sharedSecret);
         },
         enumerable: false,
-        configurable: true,
+        configurable: true
     });
     /**
      * Dictionary which inform us on which record we already logged the email.
@@ -186,7 +186,7 @@ var State = /** @class */ (function () {
             partners: [],
             leads: [],
             tickets: [],
-            tasks: [],
+            tasks: []
         };
         if (!loggingStateStr || !loggingStateStr.length) {
             return defaultValues;

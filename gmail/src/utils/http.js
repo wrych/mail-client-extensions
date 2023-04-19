@@ -16,13 +16,13 @@ function postJsonRpc(url, data, headers, options) {
         id: 0,
         jsonrpc: "2.0",
         method: "call",
-        params: data,
+        params: data
     };
     var httpOptions = {
         method: "post",
         contentType: "application/json",
         payload: JSON.stringify(data),
-        headers: headers,
+        headers: headers
     };
     try {
         var response = UrlFetchApp.fetch(url, httpOptions);

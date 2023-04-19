@@ -13,7 +13,7 @@ var Ticket = /** @class */ (function () {
         var response = (0, postJsonRpc)(
             url,
             { email_body: emailBody, email_subject: emailSubject, partner_id: partnerId },
-            { Authorization: "Bearer " + accessToken },
+            { Authorization: "Bearer " + accessToken }
         );
         return response ? response.ticket_id || null : null;
     };

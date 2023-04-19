@@ -16,7 +16,7 @@ function onSavePartner(state) {
     var partnerValues = {
         name: state.partner.name,
         email: state.partner.email,
-        company: state.partner.company && state.partner.company.id,
+        company: state.partner.company && state.partner.company.id
     };
     var partnerId = Partner.savePartner(partnerValues);
     if (partnerId) {
@@ -86,7 +86,7 @@ function buildPartnerView(state, card) {
             : (0, actionCall)(state, "buildLoginMainView"),
         false,
         partner.email,
-        CardService.ImageCropType.CIRCLE,
+        CardService.ImageCropType.CIRCLE
     );
     partnerSection.addWidget(partnerCard);
     (0, buildPartnerActionView)(state, partnerSection);

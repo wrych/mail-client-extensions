@@ -37,7 +37,7 @@ var Project = /** @class */ (function () {
             response.map(function (values) {
                 return Project.fromOdooResponse(values);
             }),
-            new ErrorMessage(),
+            new ErrorMessage()
         ];
     };
     /**
@@ -54,7 +54,7 @@ var Project = /** @class */ (function () {
         }
         return Project.fromJson({
             id: projectId,
-            name: response.name,
+            name: response.name
         });
     };
     return Project;

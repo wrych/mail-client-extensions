@@ -60,8 +60,8 @@ function buildCompanyView(state, card) {
                         : null,
                     false,
                     company.email,
-                    CardService.ImageCropType.CIRCLE,
-                ),
+                    CardService.ImageCropType.CIRCLE
+                )
             );
         }
         _addSocialButtons(companySection, company);
@@ -82,8 +82,8 @@ function buildCompanyView(state, card) {
                         null,
                         null,
                         null,
-                        (0, actionCall)(state, "onUnfoldCompanyDescription"),
-                    ),
+                        (0, actionCall)(state, "onUnfoldCompanyDescription")
+                    )
                 );
             }
         }
@@ -95,8 +95,8 @@ function buildCompanyView(state, card) {
                     UI_ICONS.location,
                     null,
                     null,
-                    "https://www.google.com/maps/search/" + encodeURIComponent(company.address).replace("/", " "),
-                ),
+                    "https://www.google.com/maps/search/" + encodeURIComponent(company.address).replace("/", " ")
+                )
             );
         }
         if (company.phones) {
@@ -110,13 +110,13 @@ function buildCompanyView(state, card) {
                     UI_ICONS.website,
                     null,
                     null,
-                    company.website,
-                ),
+                    company.website
+                )
             );
         }
         if (company.industry) {
             companySection.addWidget(
-                (0, createKeyValueWidget)((0, _t)("Industry"), company.industry, UI_ICONS.industry),
+                (0, createKeyValueWidget)((0, _t)("Industry"), company.industry, UI_ICONS.industry)
             );
         }
         if (company.employees) {
@@ -124,13 +124,13 @@ function buildCompanyView(state, card) {
                 (0, createKeyValueWidget)(
                     (0, _t)("Employees"),
                     (0, _t)("%s employees", company.employees),
-                    UI_ICONS.people,
-                ),
+                    UI_ICONS.people
+                )
             );
         }
         if (company.foundedYear) {
             companySection.addWidget(
-                (0, createKeyValueWidget)((0, _t)("Founded Year"), "" + company.foundedYear, UI_ICONS.foundation),
+                (0, createKeyValueWidget)((0, _t)("Founded Year"), "" + company.foundedYear, UI_ICONS.foundation)
             );
         }
         if (company.tags) {
@@ -138,12 +138,12 @@ function buildCompanyView(state, card) {
         }
         if (company.companyType) {
             companySection.addWidget(
-                (0, createKeyValueWidget)((0, _t)("Company Type"), company.companyType, UI_ICONS.company_type),
+                (0, createKeyValueWidget)((0, _t)("Company Type"), company.companyType, UI_ICONS.company_type)
             );
         }
         if (company.annualRevenue) {
             companySection.addWidget(
-                (0, createKeyValueWidget)((0, _t)("Annual Revenue"), company.annualRevenue, UI_ICONS.money),
+                (0, createKeyValueWidget)((0, _t)("Annual Revenue"), company.annualRevenue, UI_ICONS.money)
             );
         }
         card.addSection(companySection);
@@ -154,7 +154,7 @@ function buildCompanyView(state, card) {
                 enrichSection.addWidget(
                     CardService.newTextButton()
                         .setText((0, _t)("Enrich Company"))
-                        .setOnClickAction((0, actionCall)(state, "onEnrichCompany")),
+                        .setOnClickAction((0, actionCall)(state, "onEnrichCompany"))
                 );
             }
             card.addSection(enrichSection);
@@ -162,13 +162,13 @@ function buildCompanyView(state, card) {
     } else if (state.partner.id) {
         var companySection = CardService.newCardSection().setHeader("<b>" + (0, _t)("Company Insights") + "</b>");
         companySection.addWidget(
-            CardService.newTextParagraph().setText((0, _t)("No company attached to this contact.")),
+            CardService.newTextParagraph().setText((0, _t)("No company attached to this contact."))
         );
         if (state.error.canCreateCompany && state.canCreatePartner) {
             companySection.addWidget(
                 CardService.newTextButton()
                     .setText((0, _t)("Create a company"))
-                    .setOnClickAction((0, actionCall)(state, "onCreateCompany")),
+                    .setOnClickAction((0, actionCall)(state, "onCreateCompany"))
             );
         }
         card.addSection(companySection);
@@ -181,32 +181,32 @@ function _addSocialButtons(section, company) {
             name: "Facebook",
             url: "https://facebook.com/",
             icon: SOCIAL_MEDIA_ICONS.facebook,
-            key: "facebook",
+            key: "facebook"
         },
         {
             name: "Twitter",
             url: "https://twitter.com/",
             icon: SOCIAL_MEDIA_ICONS.twitter,
-            key: "twitter",
+            key: "twitter"
         },
         {
             name: "LinkedIn",
             url: "https://linkedin.com/",
             icon: SOCIAL_MEDIA_ICONS.linkedin,
-            key: "linkedin",
+            key: "linkedin"
         },
         {
             name: "Github",
             url: "https://github.com/",
             icon: SOCIAL_MEDIA_ICONS.github,
-            key: "github",
+            key: "github"
         },
         {
             name: "Crunchbase",
             url: "https://crunchbase.com/",
             icon: SOCIAL_MEDIA_ICONS.crunchbase,
-            key: "crunchbase",
-        },
+            key: "crunchbase"
+        }
     ];
     for (var _i = 0, socialMedias_1 = socialMedias; _i < socialMedias_1.length; _i++) {
         var media = socialMedias_1[_i];
@@ -216,7 +216,7 @@ function _addSocialButtons(section, company) {
                 CardService.newImageButton()
                     .setAltText(media.name)
                     .setIconUrl(media.icon)
-                    .setOpenLink(CardService.newOpenLink().setUrl(media.url + url)),
+                    .setOpenLink(CardService.newOpenLink().setUrl(media.url + url))
             );
         }
     }

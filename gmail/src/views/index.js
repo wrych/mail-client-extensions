@@ -12,8 +12,8 @@ function buildView(state) {
                 CardService.newTextButton()
                     .setText((0, _t)("Login"))
                     .setBackgroundColor("#00A09D")
-                    .setOnClickAction((0, actionCall)(state, "buildLoginMainView")),
-            ),
+                    .setOnClickAction((0, actionCall)(state, "buildLoginMainView"))
+            )
         );
     }
     return card.build();

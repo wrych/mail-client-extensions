@@ -16,7 +16,7 @@ var Translate = /** @class */ (function () {
             this.translations = (0, postJsonRpc)(
                 State.odooServerUrl + URLS.GET_TRANSLATIONS,
                 {},
-                { Authorization: "Bearer " + State.accessToken },
+                { Authorization: "Bearer " + State.accessToken }
             );
             if (this.translations) {
                 // Put in the cacher for 6 hours (maximum cache life time)
@@ -55,7 +55,7 @@ var Translate = /** @class */ (function () {
                         return "%\\(".concat(x, "\\)s");
                     })
                     .join("|"),
-                "gi",
+                "gi"
             );
             return translated.replace(re, function (key) {
                 return parameters[key.substring(2, key.length - 2)] || "";

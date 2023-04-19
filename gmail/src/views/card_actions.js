@@ -15,7 +15,7 @@ function onLogout(state) {
         null,
         null,
         canCreateProject,
-        error,
+        error
     );
     return (0, pushToRoot)((0, buildView)(newState));
 }
@@ -25,12 +25,12 @@ function buildCardActionsView(state, card) {
         card.addCardAction(
             CardService.newCardAction()
                 .setText((0, _t)("Logout"))
-                .setOnClickAction((0, actionCall)(state, "onLogout")),
+                .setOnClickAction((0, actionCall)(state, "onLogout"))
         );
     }
     card.addCardAction(
         CardService.newCardAction()
             .setText((0, _t)("Debug"))
-            .setOnClickAction((0, actionCall)(state, "buildDebugView")),
+            .setOnClickAction((0, actionCall)(state, "buildDebugView"))
     );
 }

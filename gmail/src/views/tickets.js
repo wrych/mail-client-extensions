@@ -9,7 +9,7 @@ function onCreateTicket(state) {
         "/web#id="
             .concat(
                 ticketId,
-                "&action=helpdesk_mail_plugin.helpdesk_ticket_action_form_edit&model=helpdesk.ticket&view_type=form",
+                "&action=helpdesk_mail_plugin.helpdesk_ticket_action_form_edit&model=helpdesk.ticket&view_type=form"
             )
             .concat(cids);
     return (0, openUrl)(ticketUrl);
@@ -37,13 +37,13 @@ function buildTicketsView(state, card) {
     }
     var loggingState = State.getLoggingState(state.email.messageId);
     var ticketsSection = CardService.newCardSection().setHeader(
-        "<b>" + (0, _t)("Tickets (%s)", tickets.length) + "</b>",
+        "<b>" + (0, _t)("Tickets (%s)", tickets.length) + "</b>"
     );
     if (state.partner.id) {
         ticketsSection.addWidget(
             CardService.newTextButton()
                 .setText((0, _t)("Create"))
-                .setOnClickAction((0, actionCall)(state, "onCreateTicket")),
+                .setOnClickAction((0, actionCall)(state, "onCreateTicket"))
         );
         var cids = state.odooCompaniesParameter;
         for (var _i = 0, tickets_1 = tickets; _i < tickets_1.length; _i++) {
@@ -60,8 +60,8 @@ function buildTicketsView(state, card) {
                     .setIconUrl(UI_ICONS.email_in_odoo)
                     .setOnClickAction(
                         (0, actionCall)(state, "onLogEmailOnTicket", {
-                            ticketId: ticket.id,
-                        }),
+                            ticketId: ticket.id
+                        })
                     );
             }
             ticketsSection.addWidget(
@@ -71,17 +71,17 @@ function buildTicketsView(state, card) {
                     null,
                     null,
                     ticketButton,
-                    odooServerUrl + "/web#id=".concat(ticket.id, "&model=helpdesk.ticket&view_type=form").concat(cids),
-                ),
+                    odooServerUrl + "/web#id=".concat(ticket.id, "&model=helpdesk.ticket&view_type=form").concat(cids)
+                )
             );
         }
     } else if (state.canCreatePartner) {
         ticketsSection.addWidget(
-            CardService.newTextParagraph().setText((0, _t)("Save the contact to create new tickets.")),
+            CardService.newTextParagraph().setText((0, _t)("Save the contact to create new tickets."))
         );
     } else {
         ticketsSection.addWidget(
-            CardService.newTextParagraph().setText((0, _t)("The Contact needs to exist to create Ticket.")),
+            CardService.newTextParagraph().setText((0, _t)("The Contact needs to exist to create Ticket."))
         );
     }
     card.addSection(ticketsSection);

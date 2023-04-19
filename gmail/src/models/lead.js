@@ -13,7 +13,7 @@ var Lead = /** @class */ (function () {
         var response = (0, postJsonRpc)(
             url,
             { email_body: emailBody, email_subject: emailSubject, partner_id: partnerId },
-            { Authorization: "Bearer " + accessToken },
+            { Authorization: "Bearer " + accessToken }
         );
         return response ? response.lead_id || null : null;
     };

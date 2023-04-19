@@ -34,7 +34,7 @@ function onSelectProject(state, parameters) {
         State.odooServerUrl +
         "/web#id=".concat(
             task.id,
-            "&action=project_mail_plugin.project_task_action_form_edit&model=project.task&view_type=form",
+            "&action=project_mail_plugin.project_task_action_form_edit&model=project.task&view_type=form"
         );
     // Open the URL to the Odoo task and update the card
     return CardService.newActionResponseBuilder()
@@ -63,7 +63,7 @@ function buildCreateTaskView(state, query, hideCreateProjectSection) {
     var card = CardService.newCardBuilder();
     if (!noProject) {
         var projectSection = CardService.newCardSection().setHeader(
-            "<b>" + (0, _t)("Create a Task in an existing Project") + "</b>",
+            "<b>" + (0, _t)("Create a Task in an existing Project") + "</b>"
         );
         projectSection.addWidget(
             CardService.newTextInput()
@@ -72,18 +72,18 @@ function buildCreateTaskView(state, query, hideCreateProjectSection) {
                 .setValue(query || "")
                 .setOnChangeAction(
                     (0, actionCall)(state, "onSearchProjectClick", {
-                        hideCreateProjectSection: hideCreateProjectSection,
-                    }),
-                ),
+                        hideCreateProjectSection: hideCreateProjectSection
+                    })
+                )
         );
         projectSection.addWidget(
             CardService.newTextButton()
                 .setText((0, _t)("Search"))
                 .setOnClickAction(
                     (0, actionCall)(state, "onSearchProjectClick", {
-                        hideCreateProjectSection: hideCreateProjectSection,
-                    }),
-                ),
+                        hideCreateProjectSection: hideCreateProjectSection
+                    })
+                )
         );
         if (!projects.length) {
             projectSection.addWidget(CardService.newTextParagraph().setText((0, _t)("No project found.")));
@@ -96,7 +96,7 @@ function buildCreateTaskView(state, query, hideCreateProjectSection) {
                 null,
                 project.partnerName,
                 null,
-                (0, actionCall)(state, "onSelectProject", { project: project }),
+                (0, actionCall)(state, "onSelectProject", { project: project })
             );
             projectSection.addWidget(projectCard);
         }
@@ -104,18 +104,18 @@ function buildCreateTaskView(state, query, hideCreateProjectSection) {
     }
     if (!hideCreateProjectSection && state.canCreateProject) {
         var createProjectSection = CardService.newCardSection().setHeader(
-            "<b>" + (0, _t)("Create a Task in a new Project") + "</b>",
+            "<b>" + (0, _t)("Create a Task in a new Project") + "</b>"
         );
         createProjectSection.addWidget(
             CardService.newTextInput()
                 .setFieldName("new_project_name")
                 .setTitle((0, _t)("Project Name"))
-                .setValue(""),
+                .setValue("")
         );
         createProjectSection.addWidget(
             CardService.newTextButton()
                 .setText((0, _t)("Create Project & Task"))
-                .setOnClickAction((0, actionCall)(state, "onCreateProjectClick")),
+                .setOnClickAction((0, actionCall)(state, "onCreateProjectClick"))
         );
         card.addSection(createProjectSection);
     } else if (noProject) {
@@ -124,8 +124,8 @@ function buildCreateTaskView(state, query, hideCreateProjectSection) {
         noProjectSection.addWidget(CardService.newTextParagraph().setText("<b>" + (0, _t)("No project") + "</b>"));
         noProjectSection.addWidget(
             CardService.newTextParagraph().setText(
-                (0, _t)("There are no project in your database. Please ask your project manager to create one."),
-            ),
+                (0, _t)("There are no project in your database. Please ask your project manager to create one.")
+            )
         );
         card.addSection(noProjectSection);
     }

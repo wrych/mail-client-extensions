@@ -28,7 +28,7 @@ function onGmailMessageOpen(event) {
         null,
         null,
         canCreateProject,
-        error,
+        error
     );
     return [(0, buildView)(state)];
 }
