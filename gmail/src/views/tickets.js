@@ -1,7 +1,7 @@
 function onCreateTicket(state) {
     var ticketId = Ticket.createTicket(state.partner.id, state.email.body, state.email.subject);
     if (!ticketId) {
-        return (0, notify)((0, _t)("Could not create the ticket"));
+        return notify((0, _t)("Could not create the ticket"));
     }
     var cids = state.odooCompaniesParameter;
     var ticketUrl =
@@ -12,21 +12,21 @@ function onCreateTicket(state) {
                 "&action=helpdesk_mail_plugin.helpdesk_ticket_action_form_edit&model=helpdesk.ticket&view_type=form"
             )
             .concat(cids);
-    return (0, openUrl)(ticketUrl);
+    return openUrl(ticketUrl);
 }
 function onLogEmailOnTicket(state, parameters) {
     var ticketId = parameters.ticketId;
     if (State.checkLoggingState(state.email.messageId, "tickets", ticketId)) {
-        state.error = (0, logEmail)(ticketId, "helpdesk.ticket", state.email);
+        state.error = logEmail(ticketId, "helpdesk.ticket", state.email);
         if (!state.error.code) {
             State.setLoggingState(state.email.messageId, "tickets", ticketId);
         }
-        return (0, updateCard)((0, buildView)(state));
+        return updateCard(buildView(state));
     }
-    return (0, notify)((0, _t)("Email already logged on the ticket"));
+    return notify((0, _t)("Email already logged on the ticket"));
 }
 function onEmailAlreradyLoggedOnTicket() {
-    return (0, notify)((0, _t)("Email already logged on the ticket"));
+    return notify((0, _t)("Email already logged on the ticket"));
 }
 function buildTicketsView(state, card) {
     var odooServerUrl = State.odooServerUrl;
@@ -43,7 +43,7 @@ function buildTicketsView(state, card) {
         ticketsSection.addWidget(
             CardService.newTextButton()
                 .setText((0, _t)("Create"))
-                .setOnClickAction((0, actionCall)(state, "onCreateTicket"))
+                .setOnClickAction(actionCall(state, "onCreateTicket"))
         );
         var cids = state.odooCompaniesParameter;
         for (var _i = 0, tickets_1 = tickets; _i < tickets_1.length; _i++) {
@@ -53,19 +53,19 @@ function buildTicketsView(state, card) {
                 ticketButton = CardService.newImageButton()
                     .setAltText((0, _t)("Email already logged on the ticket"))
                     .setIconUrl(UI_ICONS.email_logged)
-                    .setOnClickAction((0, actionCall)(state, "onEmailAlreradyLoggedOnTicket"));
+                    .setOnClickAction(actionCall(state, "onEmailAlreradyLoggedOnTicket"));
             } else {
                 ticketButton = CardService.newImageButton()
                     .setAltText((0, _t)("Log the email on the ticket"))
                     .setIconUrl(UI_ICONS.email_in_odoo)
                     .setOnClickAction(
-                        (0, actionCall)(state, "onLogEmailOnTicket", {
+                        actionCall(state, "onLogEmailOnTicket", {
                             ticketId: ticket.id
                         })
                     );
             }
             ticketsSection.addWidget(
-                (0, createKeyValueWidget)(
+                createKeyValueWidget(
                     null,
                     ticket.name,
                     null,

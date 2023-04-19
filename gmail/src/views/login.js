@@ -1,15 +1,15 @@
 function onNextLogin(event) {
-    var validatedUrl = (0, formatUrl)(event.formInput.odooServerUrl);
+    var validatedUrl = formatUrl(event.formInput.odooServerUrl);
     if (!validatedUrl) {
-        return (0, notify)("Invalid URL");
+        return notify("Invalid URL");
     }
     if (!/^https:\/\/([^\/?]*\.)?dectris\.odoo\.camptocamp\.ch(\/|$)/.test(validatedUrl)) {
-        return (0, notify)("The URL must be a subdomain of odoo.com");
+        return notify("The URL must be a subdomain of odoo.com");
     }
-    (0, clearTranslationCache)();
+    clearTranslationCache();
     State.odooServerUrl = validatedUrl;
-    if (!(0, isOdooDatabaseReachable)(validatedUrl)) {
-        return (0, notify)(
+    if (!isOdooDatabaseReachable(validatedUrl)) {
+        return notify(
             "Could not connect to your database. Make sure the module is installed in Odoo (Settings > General Settings > Integrations > Mail Plugins)"
         );
     }
@@ -41,15 +41,15 @@ function buildLoginMainView() {
             )
             .addWidget(
                 CardService.newTextButton()
-                    .setText((0, repeat)(invisibleChar, 12) + "Login" + (0, repeat)(invisibleChar, 12))
+                    .setText(repeat(invisibleChar, 12) + "Login" + repeat(invisibleChar, 12))
                     .setTextButtonStyle(CardService.TextButtonStyle.FILLED)
                     .setBackgroundColor("#00A09D")
                     .setOnClickAction(CardService.newAction().setFunctionName("onNextLogin"))
             )
-            .addWidget(CardService.newTextParagraph().setText((0, repeat)(invisibleChar, 13) + "<b>OR</b>"))
+            .addWidget(CardService.newTextParagraph().setText(repeat(invisibleChar, 13) + "<b>OR</b>"))
             .addWidget(
                 CardService.newTextButton()
-                    .setText((0, repeat)(invisibleChar, 11) + " Sign Up" + (0, repeat)(invisibleChar, 11))
+                    .setText(repeat(invisibleChar, 11) + " Sign Up" + repeat(invisibleChar, 11))
                     .setOpenLink(
                         CardService.newOpenLink().setUrl(
                             "https://www.odoo.com/trial?selected_app=mail_plugin:crm:helpdesk:project"
@@ -57,33 +57,33 @@ function buildLoginMainView() {
                     )
             )
             .addWidget(
-                (0, createKeyValueWidget)(
+                createKeyValueWidget(
                     null,
                     "Create leads from emails sent to your email address.",
                     IMAGES_LOGIN.email
                 )
             )
             .addWidget(
-                (0, createKeyValueWidget)(
+                createKeyValueWidget(
                     null,
                     "Create tickets from emails sent to your email address.",
                     IMAGES_LOGIN.ticket
                 )
             )
-            .addWidget((0, createKeyValueWidget)(null, "Centralize Prospects' emails into CRM.", IMAGES_LOGIN.crm))
+            .addWidget(createKeyValueWidget(null, "Centralize Prospects' emails into CRM.", IMAGES_LOGIN.crm))
             .addWidget(
-                (0, createKeyValueWidget)(
+                createKeyValueWidget(
                     null,
                     "Generate Tasks from emails sent to your email address in any Odoo project.",
                     IMAGES_LOGIN.project
                 )
             )
             .addWidget(
-                (0, createKeyValueWidget)(null, "Search and store insights on your contacts.", IMAGES_LOGIN.search)
+                createKeyValueWidget(null, "Search and store insights on your contacts.", IMAGES_LOGIN.search)
             )
             .addWidget(
                 CardService.newTextParagraph().setText(
-                    (0, repeat)(invisibleChar, 13) + '<a href="'.concat(faqUrl, '">FAQ</a>')
+                    repeat(invisibleChar, 13) + '<a href="'.concat(faqUrl, '">FAQ</a>')
                 )
             )
     );

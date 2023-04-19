@@ -22,7 +22,7 @@ function odooAuthCallback(callbackRequest) {
     Logger.log("Get access token from auth code...");
     var userProperties = PropertiesService.getUserProperties();
     var odooUrl = userProperties.getProperty("ODOO_SERVER_URL");
-    var response = (0, postJsonRpc)(odooUrl + ODOO_AUTH_URLS.CODE_VALIDATION, {
+    var response = postJsonRpc(odooUrl + ODOO_AUTH_URLS.CODE_VALIDATION, {
         auth_code: authCode
     });
     if (!response || !response.access_token || !response.access_token.length) {
@@ -61,7 +61,7 @@ function getOdooAuthUrl() {
     var url =
         odooUrl +
         ODOO_AUTH_URLS.AUTH_CODE +
-        (0, encodeQueryData)({
+        encodeQueryData({
             redirect: redirectToAddon,
             friendlyname: "Gmail",
             state: stateToken,
@@ -99,7 +99,7 @@ var isOdooDatabaseReachable = function (odooUrl) {
     if (!odooUrl || !odooUrl.length) {
         return false;
     }
-    var response = (0, postJsonRpc)(
+    var response = postJsonRpc(
         odooUrl + ODOO_AUTH_URLS.CODE_VALIDATION,
         { auth_code: null },
         {},

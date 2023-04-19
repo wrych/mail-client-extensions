@@ -31,7 +31,7 @@ function logEmail(recordId, recordModel, email) {
         error = _a[1];
     var body = _formatEmailBody(email, error);
     var url = State.odooServerUrl + URLS.LOG_EMAIL;
-    var response = (0, postJsonRpc)(
+    var response = postJsonRpc(
         url,
         { message: body, res_id: recordId, model: recordModel, attachments: attachments },
         { Authorization: "Bearer " + accessToken }

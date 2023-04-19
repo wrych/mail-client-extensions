@@ -46,7 +46,7 @@ function createKeyValueWidget(label, content, icon, bottomLabel, button, action,
     }
     var widget = CardService.newDecoratedText().setText(content).setWrapText(true);
     if (label && label.length) {
-        widget.setTopLabel((0, escapeHtml)(label));
+        widget.setTopLabel(escapeHtml(label));
     }
     if (bottomLabel) {
         widget.setBottomLabel(bottomLabel);
@@ -71,7 +71,7 @@ function createKeyValueWidget(label, content, icon, bottomLabel, button, action,
             CardService.newIconImage()
                 .setIconUrl(icon)
                 .setImageCropType(iconCropStyle)
-                .setAltText((0, escapeHtml)(iconLabel || label))
+                .setAltText(escapeHtml(iconLabel || label))
         );
     }
     widget.setWrapText(wrap);

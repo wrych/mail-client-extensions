@@ -1,19 +1,19 @@
 function onCreateTask(state) {
-    return (0, buildCreateTaskView)(state);
+    return buildCreateTaskView(state);
 }
 function onLogEmailOnTask(state, parameters) {
     var taskId = parameters.taskId;
     if (State.checkLoggingState(state.email.messageId, "tasks", taskId)) {
-        (0, logEmail)(taskId, "project.task", state.email);
+        logEmail(taskId, "project.task", state.email);
         if (!state.error.code) {
             State.setLoggingState(state.email.messageId, "tasks", taskId);
         }
-        return (0, updateCard)((0, buildView)(state));
+        return updateCard(buildView(state));
     }
-    return (0, notify)((0, _t)("Email already logged on the task"));
+    return notify((0, _t)("Email already logged on the task"));
 }
 function onEmailAlreradyLoggedOnTask() {
-    return (0, notify)((0, _t)("Email already logged on the task"));
+    return notify((0, _t)("Email already logged on the task"));
 }
 function buildTasksView(state, card) {
     var odooServerUrl = State.odooServerUrl;
@@ -29,7 +29,7 @@ function buildTasksView(state, card) {
         tasksSection.addWidget(
             CardService.newTextButton()
                 .setText((0, _t)("Create"))
-                .setOnClickAction((0, actionCall)(state, "onCreateTask"))
+                .setOnClickAction(actionCall(state, "onCreateTask"))
         );
         for (var _i = 0, tasks_1 = tasks; _i < tasks_1.length; _i++) {
             var task = tasks_1[_i];
@@ -38,21 +38,21 @@ function buildTasksView(state, card) {
                 taskButton = CardService.newImageButton()
                     .setAltText((0, _t)("Email already logged on the task"))
                     .setIconUrl(UI_ICONS.email_logged)
-                    .setOnClickAction((0, actionCall)(state, "onEmailAlreradyLoggedOnTask"));
+                    .setOnClickAction(actionCall(state, "onEmailAlreradyLoggedOnTask"));
             } else {
                 taskButton = CardService.newImageButton()
                     .setAltText((0, _t)("Log the email on the task"))
                     .setIconUrl(UI_ICONS.email_in_odoo)
                     .setOnClickAction(
-                        (0, actionCall)(state, "onLogEmailOnTask", {
+                        actionCall(state, "onLogEmailOnTask", {
                             taskId: task.id
                         })
                     );
             }
             tasksSection.addWidget(
-                (0, createKeyValueWidget)(
+                createKeyValueWidget(
                     task.projectName,
-                    (0, truncate)(task.name, 35),
+                    truncate(task.name, 35),
                     null,
                     null,
                     taskButton,

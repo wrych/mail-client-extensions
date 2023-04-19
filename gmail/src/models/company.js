@@ -5,32 +5,32 @@ var Company = /** @class */ (function () {
      */
     Company.fromIapResponse = function (values) {
         var company = new Company();
-        company.name = (0, isTrue)(values.name);
-        company.email = (0, first)(values.email);
-        company.phone = (0, first)(values.phone_numbers);
+        company.name = isTrue(values.name);
+        company.email = first(values.email);
+        company.phone = first(values.phone_numbers);
         company.isEnriched = !!Object.keys(values).length;
-        company.emails = (0, isTrue)(values.email) ? values.email.join("\n") : null;
-        company.phones = (0, isTrue)(values.phone_numbers) ? values.phone_numbers.join("\n") : null;
-        company.image = (0, isTrue)(values.logo);
-        company.website = (0, formatUrl)(values.domain);
-        company.description = (0, isTrue)(values.description);
-        company.address = (0, isTrue)(values.location);
+        company.emails = isTrue(values.email) ? values.email.join("\n") : null;
+        company.phones = isTrue(values.phone_numbers) ? values.phone_numbers.join("\n") : null;
+        company.image = isTrue(values.logo);
+        company.website = formatUrl(values.domain);
+        company.description = isTrue(values.description);
+        company.address = isTrue(values.location);
         // Social Medias
-        company.facebook = (0, isTrue)(values.facebook);
-        company.twitter = (0, isTrue)(values.twitter);
-        company.linkedin = (0, isTrue)(values.linkedin);
-        company.crunchbase = (0, isTrue)(values.crunchbase);
+        company.facebook = isTrue(values.facebook);
+        company.twitter = isTrue(values.twitter);
+        company.linkedin = isTrue(values.linkedin);
+        company.crunchbase = isTrue(values.crunchbase);
         // Additional Information
         company.employees = values.employees || null;
-        company.annualRevenue = (0, isTrue)(values.estimated_annual_revenue);
-        company.industry = (0, isTrue)(values.industry);
-        company.twitterBio = (0, isTrue)(values.twitter_bio);
+        company.annualRevenue = isTrue(values.estimated_annual_revenue);
+        company.industry = isTrue(values.industry);
+        company.twitterBio = isTrue(values.twitter_bio);
         company.twitterFollowers = values.twitter_followers || null;
         company.foundedYear = values.founded_year;
-        company.timezone = (0, isTrue)(values.timezone);
-        company.timezoneUrl = (0, isTrue)(values.timezone_url);
-        company.tags = (0, isTrue)(values.tag) ? values.tag.join(", ") : null;
-        company.companyType = (0, isTrue)(values.company_type);
+        company.timezone = isTrue(values.timezone);
+        company.timezoneUrl = isTrue(values.timezone_url);
+        company.tags = isTrue(values.tag) ? values.tag.join(", ") : null;
+        company.companyType = isTrue(values.company_type);
         return company;
     };
     /**
@@ -84,16 +84,16 @@ var Company = /** @class */ (function () {
         company.image = values.image ? "data:image/png;base64," + values.image : null;
         if (values.address) {
             company.address = "";
-            if ((0, isTrue)(values.address.street)) {
+            if (isTrue(values.address.street)) {
                 company.address += values.address.street + ", ";
             }
-            if ((0, isTrue)(values.address.zip)) {
+            if (isTrue(values.address.zip)) {
                 company.address += values.address.zip + " ";
             }
-            if ((0, isTrue)(values.address.city)) {
+            if (isTrue(values.address.city)) {
                 company.address += values.address.city + " ";
             }
-            if ((0, isTrue)(values.address.country)) {
+            if (isTrue(values.address.country)) {
                 company.address += values.address.country;
             }
         }

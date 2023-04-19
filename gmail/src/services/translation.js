@@ -13,7 +13,7 @@ var Translate = /** @class */ (function () {
             this.translations = JSON.parse(translationsStr);
         } else if (State.odooServerUrl && State.accessToken) {
             Logger.log("Download translations...");
-            this.translations = (0, postJsonRpc)(
+            this.translations = postJsonRpc(
                 State.odooServerUrl + URLS.GET_TRANSLATIONS,
                 {},
                 { Authorization: "Bearer " + State.accessToken }

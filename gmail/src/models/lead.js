@@ -10,7 +10,7 @@ var Lead = /** @class */ (function () {
     Lead.createLead = function (partnerId, emailBody, emailSubject) {
         var url = State.odooServerUrl + URLS.CREATE_LEAD;
         var accessToken = State.accessToken;
-        var response = (0, postJsonRpc)(
+        var response = postJsonRpc(
             url,
             { email_body: emailBody, email_subject: emailSubject, partner_id: partnerId },
             { Authorization: "Bearer " + accessToken }
@@ -39,7 +39,7 @@ var Lead = /** @class */ (function () {
         lead.name = values.name;
         lead.expectedRevenue = values.expected_revenue;
         lead.probability = values.probability;
-        if ((0, isTrue)(values.recurring_revenue) && (0, isTrue)(values.recurring_plan)) {
+        if (isTrue(values.recurring_revenue) && isTrue(values.recurring_plan)) {
             lead.recurringRevenue = values.recurring_revenue;
             lead.recurringPlan = values.recurring_plan;
         }

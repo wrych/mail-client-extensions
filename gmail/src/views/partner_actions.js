@@ -5,7 +5,7 @@ function onSearchPartner(state) {
             error = _a[1];
         state.searchedPartners = partners;
     }
-    return (0, buildSearchPartnerView)(state, state.partner.email, true);
+    return buildSearchPartnerView(state, state.partner.email, true);
 }
 function onReloadPartner(state) {
     var _a;
@@ -15,7 +15,7 @@ function onReloadPartner(state) {
         (state.canCreatePartner = _a[2]),
         (state.canCreateProject = _a[3]),
         (state.error = _a[4]);
-    return (0, updateCard)((0, buildView)(state));
+    return updateCard(buildView(state));
 }
 function buildPartnerActionView(state, partnerSection) {
     var isLogged = State.isLogged;
@@ -27,14 +27,14 @@ function buildPartnerActionView(state, partnerSection) {
                 CardService.newImageButton()
                     .setAltText((0, _t)("Refresh"))
                     .setIconUrl(UI_ICONS.reload)
-                    .setOnClickAction((0, actionCall)(state, "onReloadPartner"))
+                    .setOnClickAction(actionCall(state, "onReloadPartner"))
             );
         }
         actionButtonSet.addButton(
             CardService.newImageButton()
                 .setAltText((0, _t)("Search contact"))
                 .setIconUrl(UI_ICONS.search)
-                .setOnClickAction((0, actionCall)(state, "onSearchPartner"))
+                .setOnClickAction(actionCall(state, "onSearchPartner"))
         );
         partnerSection.addWidget(actionButtonSet);
     } else if (!isLogged) {
@@ -44,7 +44,7 @@ function buildPartnerActionView(state, partnerSection) {
             CardService.newImageButton()
                 .setAltText((0, _t)("Search contact"))
                 .setIconUrl(UI_ICONS.search)
-                .setOnClickAction((0, actionCall)(state, "buildLoginMainView"))
+                .setOnClickAction(actionCall(state, "buildLoginMainView"))
         );
         partnerSection.addWidget(actionButtonSet);
     }
