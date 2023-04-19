@@ -3,7 +3,7 @@ function onNextLogin(event) {
     if (!validatedUrl) {
         return (0, notify)("Invalid URL");
     }
-    if (!/^https:\/\/([^\/?]*\.)?odoo\.com(\/|$)/.test(validatedUrl)) {
+    if (!/^https:\/\/([^\/?]*\.)?dectris\.odoo\.camptocamp\.ch(\/|$)/.test(validatedUrl)) {
         return (0, notify)("The URL must be a subdomain of odoo.com");
     }
     (0, clearTranslationCache)();
