@@ -8,17 +8,17 @@ function onSearchProjectClick(state, parameters, inputs) {
     state.searchedProjects = projects;
     var createTaskView = buildCreateTaskView(state, query, true);
     // If go back, show again the "Create Project" section, but do not show all old searches
-    return parameters.hideCreateProjectSection ? (0, updateCard)(createTaskView) : (0, pushCard)(createTaskView);
+    return parameters.hideCreateProjectSection ? updateCard(createTaskView) : pushCard(createTaskView);
 }
 function onCreateProjectClick(state, parameters, inputs) {
     var inputQuery = inputs.new_project_name;
     var projectName = (inputQuery && inputQuery.length && inputQuery[0]) || "";
     if (!projectName || !projectName.length) {
-        return (0, notify)((0, _t)("The project name is required"));
+        return notify((0, _t)("The project name is required"));
     }
     var project = Project.createProject(projectName);
     if (!project) {
-        return (0, notify)((0, _t)("Could not create the project"));
+        return notify((0, _t)("Could not create the project"));
     }
     return onSelectProject(state, { project: project });
 }
@@ -26,7 +26,7 @@ function onSelectProject(state, parameters) {
     var project = Project.fromJson(parameters.project);
     var task = Task.createTask(state.partner.id, project.id, state.email.body, state.email.subject);
     if (!task) {
-        return (0, notify)((0, _t)("Could not create the task"));
+        return notify((0, _t)("Could not create the task"));
     }
     task.projectName = project.name;
     state.partner.tasks.push(task);
@@ -39,7 +39,7 @@ function onSelectProject(state, parameters) {
     // Open the URL to the Odoo task and update the card
     return CardService.newActionResponseBuilder()
         .setOpenLink(CardService.newOpenLink().setUrl(taskUrl))
-        .setNavigation((0, pushToRoot)((0, buildView)(state)))
+        .setNavigation(pushToRoot(buildView(state)))
         .build();
 }
 function buildCreateTaskView(state, query, hideCreateProjectSection) {
@@ -71,7 +71,7 @@ function buildCreateTaskView(state, query, hideCreateProjectSection) {
                 .setTitle((0, _t)("Search a Project"))
                 .setValue(query || "")
                 .setOnChangeAction(
-                    (0, actionCall)(state, "onSearchProjectClick", {
+                    actionCall(state, "onSearchProjectClick", {
                         hideCreateProjectSection: hideCreateProjectSection
                     })
                 )
@@ -80,7 +80,7 @@ function buildCreateTaskView(state, query, hideCreateProjectSection) {
             CardService.newTextButton()
                 .setText((0, _t)("Search"))
                 .setOnClickAction(
-                    (0, actionCall)(state, "onSearchProjectClick", {
+                    actionCall(state, "onSearchProjectClick", {
                         hideCreateProjectSection: hideCreateProjectSection
                     })
                 )
@@ -90,13 +90,13 @@ function buildCreateTaskView(state, query, hideCreateProjectSection) {
         }
         for (var _i = 0, projects_1 = projects; _i < projects_1.length; _i++) {
             var project = projects_1[_i];
-            var projectCard = (0, createKeyValueWidget)(
+            var projectCard = createKeyValueWidget(
                 null,
                 project.name,
                 null,
                 project.partnerName,
                 null,
-                (0, actionCall)(state, "onSelectProject", { project: project })
+                actionCall(state, "onSelectProject", { project: project })
             );
             projectSection.addWidget(projectCard);
         }
@@ -115,7 +115,7 @@ function buildCreateTaskView(state, query, hideCreateProjectSection) {
         createProjectSection.addWidget(
             CardService.newTextButton()
                 .setText((0, _t)("Create Project & Task"))
-                .setOnClickAction((0, actionCall)(state, "onCreateProjectClick"))
+                .setOnClickAction(actionCall(state, "onCreateProjectClick"))
         );
         card.addSection(createProjectSection);
     } else if (noProject) {

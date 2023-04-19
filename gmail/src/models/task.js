@@ -30,7 +30,7 @@ var Task = /** @class */ (function () {
     Task.createTask = function (partnerId, projectId, emailBody, emailSubject) {
         var url = State.odooServerUrl + URLS.CREATE_TASK;
         var accessToken = State.accessToken;
-        var response = (0, postJsonRpc)(
+        var response = postJsonRpc(
             url,
             { email_subject: emailSubject, email_body: emailBody, project_id: projectId, partner_id: partnerId },
             { Authorization: "Bearer " + accessToken }

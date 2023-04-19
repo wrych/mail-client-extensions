@@ -80,7 +80,7 @@ var Partner = /** @class */ (function () {
         var odooSharedSecret = State.odooSharedSecret;
         var userEmail = Session.getEffectiveUser().getEmail();
         var senderDomain = email.split("@").pop();
-        var response = (0, postJsonRpcCached)(URLS.IAP_COMPANY_ENRICHMENT, {
+        var response = postJsonRpcCached(URLS.IAP_COMPANY_ENRICHMENT, {
             email: userEmail,
             domain: senderDomain,
             secret: odooSharedSecret
@@ -105,7 +105,7 @@ var Partner = /** @class */ (function () {
     Partner.savePartner = function (partnerValues) {
         var url = State.odooServerUrl + URLS.PARTNER_CREATE;
         var accessToken = State.accessToken;
-        var response = (0, postJsonRpc)(url, partnerValues, {
+        var response = postJsonRpc(url, partnerValues, {
             Authorization: "Bearer " + accessToken
         });
         return response && response.id;
@@ -126,7 +126,7 @@ var Partner = /** @class */ (function () {
         }
         var url = State.odooServerUrl + URLS.GET_PARTNER;
         var accessToken = State.accessToken;
-        var response = (0, postJsonRpc)(
+        var response = postJsonRpc(
             url,
             { email: email, name: name, partner_id: partnerId },
             { Authorization: "Bearer " + accessToken }
@@ -173,7 +173,7 @@ var Partner = /** @class */ (function () {
     Partner.searchPartner = function (query) {
         var url = State.odooServerUrl + URLS.SEARCH_PARTNER;
         var accessToken = State.accessToken;
-        var response = (0, postJsonRpc)(url, { search_term: query }, { Authorization: "Bearer " + accessToken });
+        var response = postJsonRpc(url, { search_term: query }, { Authorization: "Bearer " + accessToken });
         if (!response || !response.partners) {
             return [[], new ErrorMessage("http_error_odoo")];
         }
@@ -199,7 +199,7 @@ var Partner = /** @class */ (function () {
     Partner._enrichOrCreateCompany = function (partnerId, endpoint) {
         var url = State.odooServerUrl + endpoint;
         var accessToken = State.accessToken;
-        var response = (0, postJsonRpc)(url, { partner_id: partnerId }, { Authorization: "Bearer " + accessToken });
+        var response = postJsonRpc(url, { partner_id: partnerId }, { Authorization: "Bearer " + accessToken });
         if (!response) {
             return [null, new ErrorMessage("http_error_odoo")];
         }

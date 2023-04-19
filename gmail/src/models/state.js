@@ -110,8 +110,8 @@ var State = /** @class */ (function () {
          * application cards.
          */
         get: function () {
-            var accessToken = (0, getAccessToken)();
-            return (0, isTrue)(accessToken);
+            var accessToken = getAccessToken();
+            return isTrue(accessToken);
         },
         enumerable: false,
         configurable: true
@@ -128,8 +128,8 @@ var State = /** @class */ (function () {
          * Return the URL require to login to the Odoo database.
          */
         get: function () {
-            var loginUrl = (0, getOdooAuthUrl)();
-            return (0, isTrue)(loginUrl);
+            var loginUrl = getOdooAuthUrl();
+            return isTrue(loginUrl);
         },
         enumerable: false,
         configurable: true
@@ -141,7 +141,7 @@ var State = /** @class */ (function () {
         get: function () {
             var userProperties = PropertiesService.getUserProperties();
             var serverUrl = userProperties.getProperty("ODOO_SERVER_URL");
-            return (0, isTrue)(serverUrl);
+            return isTrue(serverUrl);
         },
         /**
          * Change the base URL of the Odoo database.
@@ -161,7 +161,7 @@ var State = /** @class */ (function () {
         get: function () {
             var scriptProperties = PropertiesService.getScriptProperties();
             var sharedSecret = scriptProperties.getProperty("ODOO_SHARED_SECRET");
-            return (0, isTrue)(sharedSecret);
+            return isTrue(sharedSecret);
         },
         enumerable: false,
         configurable: true

@@ -1,6 +1,6 @@
 function onLogout(state) {
-    (0, resetAccessToken)();
-    (0, clearTranslationCache)();
+    resetAccessToken();
+    clearTranslationCache();
     var _a = Partner.enrichPartner(state.email.contactEmail, state.email.contactName),
         partner = _a[0],
         odooUserCompanies = _a[1],
@@ -17,7 +17,7 @@ function onLogout(state) {
         canCreateProject,
         error
     );
-    return (0, pushToRoot)((0, buildView)(newState));
+    return pushToRoot(buildView(newState));
 }
 function buildCardActionsView(state, card) {
     var canContactOdooDatabase = state.error.canContactOdooDatabase && State.isLogged;
@@ -25,12 +25,12 @@ function buildCardActionsView(state, card) {
         card.addCardAction(
             CardService.newCardAction()
                 .setText((0, _t)("Logout"))
-                .setOnClickAction((0, actionCall)(state, "onLogout"))
+                .setOnClickAction(actionCall(state, "onLogout"))
         );
     }
     card.addCardAction(
         CardService.newCardAction()
             .setText((0, _t)("Debug"))
-            .setOnClickAction((0, actionCall)(state, "buildDebugView"))
+            .setOnClickAction(actionCall(state, "buildDebugView"))
     );
 }

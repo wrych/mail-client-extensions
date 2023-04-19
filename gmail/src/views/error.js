@@ -1,6 +1,6 @@
 function onCloseError(state) {
     state.error.code = null;
-    return (0, updateCard)((0, buildView)(state));
+    return updateCard(buildView(state));
 }
 function _addError(message, state, icon) {
     if (icon === void 0) {
@@ -8,7 +8,7 @@ function _addError(message, state, icon) {
     }
     var errorSection = CardService.newCardSection();
     errorSection.addWidget(
-        (0, createKeyValueWidget)(
+        createKeyValueWidget(
             null,
             message,
             icon,
@@ -16,7 +16,7 @@ function _addError(message, state, icon) {
             CardService.newImageButton()
                 .setAltText((0, _t)("Close"))
                 .setIconUrl(UI_ICONS.close)
-                .setOnClickAction((0, actionCall)(state, "onCloseError"))
+                .setOnClickAction(actionCall(state, "onCloseError"))
         )
     );
     return errorSection;

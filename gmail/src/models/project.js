@@ -29,7 +29,7 @@ var Project = /** @class */ (function () {
     Project.searchProject = function (query) {
         var url = State.odooServerUrl + URLS.SEARCH_PROJECT;
         var accessToken = State.accessToken;
-        var response = (0, postJsonRpc)(url, { search_term: query }, { Authorization: "Bearer " + accessToken });
+        var response = postJsonRpc(url, { search_term: query }, { Authorization: "Bearer " + accessToken });
         if (!response) {
             return [[], new ErrorMessage("http_error_odoo")];
         }
@@ -47,7 +47,7 @@ var Project = /** @class */ (function () {
     Project.createProject = function (name) {
         var url = State.odooServerUrl + URLS.CREATE_PROJECT;
         var accessToken = State.accessToken;
-        var response = (0, postJsonRpc)(url, { name: name }, { Authorization: "Bearer " + accessToken });
+        var response = postJsonRpc(url, { name: name }, { Authorization: "Bearer " + accessToken });
         var projectId = response ? response.project_id || null : null;
         if (!projectId) {
             return null;

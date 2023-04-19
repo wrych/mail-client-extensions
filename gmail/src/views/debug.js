@@ -7,12 +7,12 @@ function buildDebugView() {
     );
     card.addSection(
         CardService.newCardSection().addWidget(
-            (0, createKeyValueWidget)((0, _t)("Odoo Server URL"), State.odooServerUrl)
+            createKeyValueWidget((0, _t)("Odoo Server URL"), State.odooServerUrl)
         )
     );
     card.addSection(
         CardService.newCardSection().addWidget(
-            (0, createKeyValueWidget)((0, _t)("Odoo Access Token"), State.accessToken)
+            createKeyValueWidget((0, _t)("Odoo Access Token"), State.accessToken)
         )
     );
     card.addSection(

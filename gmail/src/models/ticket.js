@@ -10,7 +10,7 @@ var Ticket = /** @class */ (function () {
     Ticket.createTicket = function (partnerId, emailBody, emailSubject) {
         var url = State.odooServerUrl + URLS.CREATE_TICKET;
         var accessToken = State.accessToken;
-        var response = (0, postJsonRpc)(
+        var response = postJsonRpc(
             url,
             { email_body: emailBody, email_subject: emailSubject, partner_id: partnerId },
             { Authorization: "Bearer " + accessToken }
