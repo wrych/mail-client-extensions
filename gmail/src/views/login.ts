@@ -13,8 +13,8 @@ function onNextLogin(event) {
         return notify("Invalid URL");
     }
 
-    if (!/^https:\/\/([^\/?]*\.)?odoo\.com(\/|$)/.test(validatedUrl)) {
-        return notify("The URL must be a subdomain of odoo.com");
+    if (!/^https:\/\/erp\.dectris\.com(\/|$)/.test(validatedUrl)) {
+        return notify("The URL must be erp.dectris.com");
     }
 
     clearTranslationCache();
@@ -54,8 +54,8 @@ export function buildLoginMainView() {
                 CardService.newTextInput()
                     .setFieldName("odooServerUrl")
                     .setTitle("Database URL")
-                    .setHint("e.g. company.odoo.com")
-                    .setValue(PropertiesService.getUserProperties().getProperty("ODOO_SERVER_URL") || ""),
+                    .setHint("e.g. erp.dectris.com")
+                    .setValue("https://erp.dectris.com"),
             )
             .addWidget(
                 CardService.newTextButton()
